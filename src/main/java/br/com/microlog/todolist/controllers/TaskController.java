@@ -29,11 +29,9 @@ public class TaskController {
   @GetMapping("/user/{idUser}")
   public ResponseEntity<?> listByIdUser(@PathVariable UUID idUser) {
     try {
-      var listUser = taskService.listByIdUser(idUser);
+      taskService.listByIdUser(idUser);
 
-      listUser.add("atualizou");
-
-      return new ResponseEntity<>(listUser, HttpStatus.OK);
+      return new ResponseEntity<>("Sucesso ao listar o usuario", HttpStatus.OK);
     } catch (Exception e) {
       return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
